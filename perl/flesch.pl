@@ -2,7 +2,7 @@
 use warnings;
 use strict;
 
-open my $fh, '<', 'textfile.txt' or die "can't open file $!";
+open my $fh, '<', 'KJV.txt' or die "can't open file $!";
 my $file_contents = do
 {
     local $/;
