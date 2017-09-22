@@ -38,6 +38,8 @@ int main(int argc, char* argv[])
     cout << "a = " << a << endl;
     cout << "b = " <<  b << endl;
     double index = 206.835 - (a*84.6) - (b*1.015);
+    double grade = (a*11.8) + (b*0.39) - 15.59;
+    cout << "The grade is: " << grade << endl;
     cout << "The index is: " << index << endl;
     cout << "The number of sentences are: " << sentences << endl;
     cout << "The number of words are: " << words << endl;
