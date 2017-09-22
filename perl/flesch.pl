@@ -101,3 +101,5 @@ my $index = 206.835 - ($a*84.6) - ($b*1.015);
 print "a =  $a\n";
 print "b = $b\n";
 print "index = $index\n";
+my $grade = ($a*11.8)+($b*0.39)-15.59;
+print "grade = $grade\n";
