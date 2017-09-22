@@ -25,7 +25,9 @@ public class main {
         System.out.println("a = " + a);
         System.out.println("b = " + b);
         double index = 206.835 - (a*84.6) - (b*1.015);
-        System.out.println(index);
+        double grade = (a*11.8) + (b*0.39) - 15.59;
+        System.out.println("The grade is: " + grade);
+        System.out.println("The index is: " + index);
         System.out.println("The number of sentences is " + sentCount);
         System.out.println("The number of words is " + wordCount);
         System.out.println("The number of syllables is " + syllableCount);
