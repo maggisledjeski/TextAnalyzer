@@ -34,6 +34,7 @@ public class main {
         System.out.println("The Flesch Readability Index is " + Math.round(index));
     }
 
+//Method that deletes the digits in a string and returns the string
     public static String getRidOfNumbers(String s)
     {
         String contents = s;
@@ -71,6 +72,7 @@ public class main {
         return fin;
     }
 
+//Method that counts and returns the number of sentences in a string
     public static int countSent (String s)
     {   
         String str = s;
@@ -89,6 +91,7 @@ public class main {
         return count;
     }
     
+//Method that deletes Delims from a string
     public static String getRidOfDelims(String s)
     {
         String str = s;
@@ -97,6 +100,7 @@ public class main {
         return str1;
     }
 
+//Method that counts and returns the number of words in a string
     public static int countWord(String s)
     {
         String str = s;
@@ -113,10 +117,11 @@ public class main {
         return wc;
     }
 
+//Method that returns true when the character is a vowel
     public static boolean isVowel(char c)
     {
         char ch = c;
-        if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'y')
+        if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'||ch=='y'||ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U'||ch=='Y')
         {
             return true;
         }
@@ -126,6 +131,7 @@ public class main {
         }
     }
 
+//Method that returns true if there is only 1 vowel in the string
     public static boolean onlyVowel(String s)
     {
         String str = s;
@@ -137,7 +143,7 @@ public class main {
                 vc++;
             }
         }
-        if(vc == 1)
+        if(vc <= 1)
         {
             return true;
         }
@@ -147,6 +153,7 @@ public class main {
         }
     }
 
+//Method that counts and returns the syllable count
     public static int countSyllables(String s)
     {
         String str = s;
@@ -159,11 +166,11 @@ public class main {
             {
                 if(isVowel(token.charAt(i)))
                 {
-                    if(token.charAt(i) == 'e' && i + 1 == token.length() && onlyVowel(token) == false)
+                    if(token.charAt(i) == 'e' && i+1 == token.length() && onlyVowel(token) == false)
                     {
                         sc = sc - 1;
                     }
-                    if(i + 1 != token.length())
+                    if(i+1 != token.length())
                     {
                         if(isVowel(token.charAt(i+1)))
                         {
@@ -174,10 +181,8 @@ public class main {
                 }
             }
         }
-        
         return sc;
     }
-
 }
 
 
