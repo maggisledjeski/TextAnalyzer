@@ -27,7 +27,7 @@ end do;
 wc=0;
 do i=0,filesize
     c = long_string(i)
-    if(c=='.'.or.c=='?'.or.c=='!'.or.c==';'.or.c==':'.or.c==' '.or.c==',') then
+    if(c=='.'.or.c=='?'.or.c=='!'.or.c==';'.or.c==':'.or.c==' ') then
         wc=wc+1
     end if;
 end do;
