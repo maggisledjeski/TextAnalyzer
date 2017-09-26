@@ -2,6 +2,7 @@
 use warnings;
 use strict;
 
+#opens file and reads into $file_contents
 open my $fh, '<', 'KJV.txt' or die "can't open file $!";
 my $file_contents = do
 {
@@ -9,6 +10,7 @@ my $file_contents = do
     <$fh>;
 };
 my $sentCount = 0;
+#counts the number of sentences in a string (stored in sentCount)
 while($file_contents =~ /[.;:!?]+/g)
 {
     $sentCount++;
@@ -17,11 +19,13 @@ print "The number of sentences is: $sentCount \n";
 $file_contents =~ s/[0-9]//g; #no numbers
 $file_contents =~ s/  / /g; #no double spaces
 $file_contents =~ s/[!,:;?.]+//g; #no sentence markers
+#counts the number of words in a string (stored in array @words)
 my @words = split(' ',$file_contents);
 my $words;
 my $wordCount = scalar @words;
 print "The number of words is: $wordCount \n"; #prints num of elements in array
 
+#subroutine that returns 1 if a character is a vowel
 sub isVowel
 {
     my $char = shift;
@@ -37,6 +41,7 @@ sub isVowel
     return $bool;
 }
 
+#subroutine that counts and returns the number of syllables in a word
 sub Syllable
 {
     my $w = shift;
@@ -89,6 +94,7 @@ sub Syllable
 my $counter = 0;
 my $sc = 0;
 my $s;
+#calls Syllable subroutine and counts the number of syllables
 foreach $counter (@words)
 {
     $s = Syllable($counter);
