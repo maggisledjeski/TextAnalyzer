@@ -12,9 +12,7 @@ end subroutine read_file
 end interface
 
 call read_file(long_string,filesize)
-!print*,long_string
-!print*,"Read",filesize," characters."
-
+!counts the number of sentences in a string
 sc=0
 do i=0,filesize
     ch = long_string(i)
@@ -22,8 +20,7 @@ do i=0,filesize
         sc=sc+1
     end if;
 end do;
-!print *,sc
-
+!counts the number of words in a string
 wc=0;
 do i=0,filesize
     c = long_string(i)
@@ -31,8 +28,7 @@ do i=0,filesize
         wc=wc+1
     end if;
 end do;
-!print*,wc
-
+!counts the number of syllables in a string
 start=0;
 syc=0;   
 do i=0,filesize
@@ -53,7 +49,7 @@ do i=0,filesize
         end if;
     end if;
 end do;
-
+!subtracts from syllable count if e is the last letter in the word
 start=0
 do i=0,filesize
     c=long_string(i)
@@ -67,8 +63,7 @@ do i=0,filesize
     else
         start=0
     end if;
-end do;
-!print*,syc        
+end do;        
 
 sy=syc  !syllable count
 w=wc    !word count
@@ -82,9 +77,9 @@ print *,'a = ',a
 print *,'b = ',b
 ind=206.835 - (a*84.6) - (b*1.015)
 grade=(a*11.8)+(b*0.39)-15.59
-print *,'syllable float = ',fsy
 print *,'sentence float = ',fs
 print *,'word float = ',fw
+print *,'syllable float = ',fsy
 print *,'index is ',ind
 print *,'grade is ',grade
 
@@ -95,7 +90,6 @@ character,dimension(:),allocatable::string
 integer::counter
 integer::filesize
 character(LEN=1)::input
-
 
 inquire(file="KJV.txt",size=filesize)
 open(unit=5,status="old",access="direct",form="unformatted",recl=1,file="KJV.txt")
