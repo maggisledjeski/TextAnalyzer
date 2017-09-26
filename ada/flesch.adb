@@ -6,12 +6,11 @@ with Ada.Float_Text_IO;
 
 procedure flesch is
 
-    In_File         : File_Type;
-    value, char           : Character;
-    string_array    : array(1..5000000) of Character;
-    pos, sc, wc, nd, vc  : Integer;
-    words           : array(1..5000000) of Character;    
-    a, b, index, grade, scf, wcf, vcf  : Float;
+    In_File                             : File_Type;
+    value, char                         : Character;
+    string_array, words                 : array(1..5000000) of Character;
+    pos, sc, wc, nd, vc                 : Integer; 
+    a, b, index, grade, scf, wcf, vcf   : Float;
 
 --Function that returns true if a character is a digit in a string
 function is_Digit(a : Character) return Boolean is
