@@ -9,7 +9,7 @@ procedure flesch is
     In_File                             : File_Type;
     value, char                         : Character;
     string_array, words                 : array(1..5000000) of Character;
-    pos, sc, wc, nd, vc                 : Integer; 
+    pos, sc, wc, nd, vc, c, cc                 : Integer; 
     a, b, index, grade, scf, wcf, vcf   : Float;
 
 --Function that returns true if a character is a digit in a string
@@ -88,7 +88,7 @@ begin
 --removes the digits and delims from original string and stores it in words
     nd:=1; 
     for f in 1..pos loop
-        if not is_digit(string_array(f)) or is_Delim(string_array(f)) then
+        if not is_digit(string_array(f)) or not is_Delim(string_array(f)) then
             words(nd):=string_array(f);
             nd:=nd+1;  
         end if;
@@ -97,7 +97,8 @@ begin
 --counts the number of words in a string
     wc:=0;
     for k in 1..nd loop
-        if words(k)=' ' then
+        char:=words(k);
+        if char = ' ' then
             wc:=wc+1;
         end if;
     end loop;
@@ -106,18 +107,28 @@ begin
   
 --counts the number of syllables in a string
     vc:=0;
+    c:=0;
     for z in 1..nd loop
+        cc:=0;
+        if words(z) = ' ' and c<0 then
+            for y in 1..c+1 loop
+                if is_Vowel(words(y)) then
+                    cc:=cc+1;
+                end if;
+            end loop;
+        end if;
         if Is_Letter(words(z)) then
+            c:=c+1;
             if is_vowel(words(z)) then
                 vc:=vc+1;
                 if is_vowel(words(z-1)) then
                     vc:=vc-1;
                 end if;
-                if words(z+1) = ' ' and words(z) = 'e' then
+                if words(z+1) = ' ' and words(z) = 'e' and cc > 2 then
                     vc:=vc-1;
                 end if;
             end if;
-        end if;
+        end if;           
     end loop;
     Ada.Text_IO.Put_Line("The number of syllables are: " &natural'image(vc));
     
