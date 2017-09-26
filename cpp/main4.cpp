@@ -47,6 +47,7 @@ int main(int argc, char* argv[])
     return 0;
 }
 
+//Method that counts and returns the number of sentences in a string
 int countSent(string & line)
 {
     string str = line;
@@ -57,11 +58,11 @@ int countSent(string & line)
         {
             sc++;
         }
-    }
-    
+    }   
     return sc;
 }
 
+//Method that removes the delims from the string and returns the modified string
 string removeDelims(string & line)
 {
     string str = line;
@@ -79,6 +80,7 @@ string removeDelims(string & line)
     return str;
 }
 
+//Method that removes digits from the string and returns the modified string
 string removeNumbers(string & line)
 {
     string str = line;
@@ -96,6 +98,7 @@ string removeNumbers(string & line)
     return str;
 }
 
+//Method that counts and returns the number of words in a string
 int countWords(string & line)
 {
     string str = line;
@@ -111,13 +114,12 @@ int countWords(string & line)
        {
           wc++;
           inSpaces = false;
-       }
-
-    
+       }   
     }
     return wc;
 }
 
+//Method that returns true if the character is a vowel
 bool isVowel(char & c)
 {
     bool isV = false;
@@ -129,6 +131,7 @@ bool isVowel(char & c)
     return isV;
 }
 
+//Method that returns true if there is only 1 vowel in a word
 bool isOnlyVowel(string & line)
 {
     string str = line;
@@ -149,6 +152,8 @@ bool isOnlyVowel(string & line)
         return false;
     }
 }
+
+//Method that counts and returns the number of syllables in a string
 int countSyllables(string & line)
 {
     string str = line;
@@ -193,8 +198,7 @@ int countSyllables(string & line)
             {
                 vc--;
             }
-        }
-//    cout << word << ": " << vc << endl;    
+        }    
     }
     return vc;  
 }
