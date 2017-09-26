@@ -13,6 +13,7 @@ procedure flesch is
     words           : array(1..5000000) of Character;    
     a, b, index, grade, scf, wcf, vcf  : Float;
 
+--Function that returns true if a character is a digit in a string
 function is_Digit(a : Character) return Boolean is
 begin
     if a='0' or a='1' or a='2' or a='3' or a='4' or a='5' or a='6' or a='7' or a='8' or a='9' then
@@ -22,6 +23,7 @@ begin
     end if;
 end is_Digit;
 
+--Function that returns true if a charater is a sentence marker in a string
 function is_Sent_Mark(b : Character) return Boolean is
 begin    
     if b='.' or b='!' or b=';' or b=':' or b='?' then
@@ -31,6 +33,7 @@ begin
     end if;
 end is_Sent_Mark;
 
+--Function that returns true if a character is a vowel in a string
 function is_Vowel(c : Character) return Boolean is
 begin    
     if c='a' or c='e' or c='i' or c='o' or c='u' or c='y' or c='A' or c='E' or c='I' or c='O' or c='U' or c='Y' then
@@ -40,6 +43,7 @@ begin
     end if;
 end is_Vowel;
 
+--Function that returns true if a character is a delim in a string
 function is_Delim(d : Character) return Boolean is
 begin
     if d='.' or d='!' or d=';' or d=':' or d='?' or d=',' or d='-' then
@@ -49,6 +53,7 @@ begin
     end if;
 end is_Delim;
 
+--Function that returns true if a character is a letter in a string
 function Is_Letter(Item : Character) return Boolean is
 begin
     if is_Vowel(Item) or not is_Delim(Item) or not is_Digit(Item) then
@@ -57,6 +62,7 @@ begin
         return false;
     end if;
 end Is_Letter;
+
 begin
 
     Ada.Text_IO.Open(File=>In_File,Mode=>Ada.Text_IO.In_File,Name=>"KJV.txt");
@@ -68,7 +74,8 @@ begin
     end loop;
     exception
     when Ada.IO_Exceptions.END_ERROR=>Ada.Text_IO.Close(File=>In_File);
-    
+
+--counts the number of sentences in a string    
     sc:=0;
     for j in 1..pos loop
         char:=string_array(j);
@@ -79,6 +86,7 @@ begin
     Ada.Text_IO.Put_Line("The number of sentences are: " & natural'image(sc));
     Ada.Text_IO.New_Line;
    
+--removes the digits and delims from original string and stores it in words
     nd:=1; 
     for f in 1..pos loop
         if not is_digit(string_array(f)) or is_Delim(string_array(f)) then
@@ -87,6 +95,7 @@ begin
         end if;
     end loop;
 
+--counts the number of words in a string
     wc:=0;
     for k in 1..nd loop
         if words(k)=' ' then
@@ -96,6 +105,7 @@ begin
     Ada.Text_IO.Put_Line("The number of words are: " & natural'image(wc));
     Ada.Text_IO.New_Line;
   
+--counts the number of syllables in a string
     vc:=0;
     for z in 1..nd loop
         if Is_Letter(words(z)) then
