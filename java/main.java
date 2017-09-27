@@ -31,7 +31,6 @@ public class main {
         System.out.println("The number of sentences is " + sentCount);
         System.out.println("The number of words is " + wordCount);
         System.out.println("The number of syllables is " + syllableCount);
-        System.out.println("The Flesch Readability Index is " + Math.round(index));
     }
 
 //Method that deletes the digits in a string and returns the string
